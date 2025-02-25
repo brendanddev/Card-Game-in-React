@@ -5,9 +5,9 @@
 import "../components/Button.css"
 
 
-const Button = ({ label, onClick }) => {
+const Button = ({ label, onClick, className }) => {
     return (
-        <button onClick={onClick}>
+        <button className={`btn ${className}`} onClick={onClick}>
             {label}
         </button>
     )
