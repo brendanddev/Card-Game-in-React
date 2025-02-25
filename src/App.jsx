@@ -2,6 +2,8 @@
 // App.jsx
 // Brendan Dileo
 
+import Deck from "../src/components/Deck";
+import Button from "./components/Button";
 
 import './App.css'
 
