@@ -1,0 +1,12 @@
+
+/* Card.css */
+/* Styles for induvidual Cards */
+/* Brendan Dileo */
+
+.card {
+    width: 60px;
+    height: 90px;
+    border-radius: 8px;
+    background-color: white;
+    border: 2px solid black;
+}
