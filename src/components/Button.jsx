@@ -5,11 +5,13 @@
 import "../components/Button.css"
 
 
-const Button = () => {
+const Button = ({ label, onClick }) => {
     return (
-        <button></button>
+        <button onClick={onClick}>
+            {label}
+        </button>
     )
 }
 
-// Export
+// Export Button component
 export default Button;
