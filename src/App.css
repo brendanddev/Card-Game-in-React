@@ -1,0 +1,14 @@
+
+/* App.css
+   Global Styles
+   Brendan Dileo
+*/
+
+.main-container {
+  text-align: center;
+}
+
+.card-container {
+  margin: 10px;
+  border: 1px solid black;
+}

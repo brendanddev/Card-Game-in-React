@@ -1,0 +1,42 @@
+
+/* Button.css
+   Brendan Dileo
+*/
+
+/* Global styles across all buttons on the webpage,
+   each button will use the class name 'btn' when 
+   its created, and then its color will be determined
+   by the name of the class following btn. 
+*/
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.btn-deal5 {
+    background-color: #4CAF50; 
+}
+
+.btn-deal7 {
+    background-color: #2196F3; 
+}
+
+.btn-toss {
+    background-color: #f44336;
+}
+
+.btn-wildcard {
+    background-color: #ff9800; 
+}
+
+.btn-regroup {
+    background-color: #9c27b0;
+}
+
+.btn-reset {
+    background-color: #00bcd4; 
+}
