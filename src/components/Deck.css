@@ -2,3 +2,35 @@
 /* Deck.css
    Brendan Dileo
 */
+
+.deck-container {
+   display: flex;
+   flex-direction: column; 
+   align-items: center; 
+   margin-top: 20px;
+}
+
+.deck {
+   text-align: center;
+   width: 70px;
+   height: 120px;
+   background-color: rgb(238, 238, 238);
+   border: 2px solid #000;
+   border-radius: 8px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-bottom: 20px; 
+   cursor: pointer;
+}
+
+.card-list-container {
+   text-align: center;
+}
+
+.card-list {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 10px;
+}

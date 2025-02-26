@@ -2,6 +2,8 @@
 // Deck.jsx
 // Brendan Dileo
 
+import { useState } from "react";
+import Card from "../components/Card";
 import "../components/Deck.css";
 
 const suits = ["♥", "♦", "♣", "♠"];
@@ -18,14 +20,23 @@ const createDeck = () => {
     return deck;
 }
 
-
-const Deck = () => {
+const Deck = ({ dealtCards, setDealtCards }) => {
+    const [deck, setDeck] = useState(createDeck());
 
     const handleDeckClicked = () => { 
         const randomCardIndex = Math.floor(Math.random() * deck.length);
         const card = deck[randomCardIndex];
+        setDealtCards([...dealtCards, card]);
     }
 
+    const dealCards = (numOfCards) => {
+        let cardsDealt = [];
+        
+        for (let i = 0; i < numOfCards; i++) {
+            const card = { suit: "♠", value: "A" };
+            cardsDealt.push(card)
+        }
+    }
 
     /*
         const handleCardClicked = () => { }
@@ -48,6 +59,14 @@ const Deck = () => {
                 </span>   
             </div>
             
+            <div className="card-list-container">
+                <h3>Your Hand</h3>
+                <div className="card-list">
+                    {dealtCards.map((card, index) => (
+                        <Card key={index} card={card} />
+                    ))}
+                </div>
+            </div>
         </div>
     )
 

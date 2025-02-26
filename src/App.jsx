@@ -2,6 +2,7 @@
 // App.jsx
 // Brendan Dileo
 
+import { useState } from "react";
 import Deck from "../src/components/Deck";
 import Card from "./components/Card";
 import Button from "./components/Button";
@@ -9,12 +10,14 @@ import Button from "./components/Button";
 import './App.css'
 
 function App() {
+  const [dealtCards, setDealtCards] = useState([]);
+
 
   return (
     <div className="main-container">
       <h1>Assignment 3 - Deck of Cards</h1>
       <div className="card-container">
-        <Deck />
+        <Deck dealtCards={dealtCards} setDealtCards={setDealtCards}/>
       </div>
         <Button label="Deal 5" className="btn-deal5" />
         <Button label="Deal 7" className="btn-deal7" />
