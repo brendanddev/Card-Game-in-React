@@ -12,16 +12,16 @@ function App() {
 
   return (
     <div className="main-container">
-      <h1>Assignment 3</h1>
+      <h1>Assignment 3 - Deck of Cards</h1>
       <div className="card-container">
-        <Card />
+        <Deck />
+      </div>
         <Button label="Deal 5" className="btn-deal5" />
         <Button label="Deal 7" className="btn-deal7" />
         <Button label="Toss" className="btn-toss" />
         <Button label="WildCard" className="btn-wildcard" />
         <Button label="ReGroup" className="btn-regroup" />
         <Button label="Reset" className="btn-reset" />
-      </div>
     </div>
   )
 }
