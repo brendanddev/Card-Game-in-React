@@ -4,9 +4,12 @@
 
 import '../components/Card.css';
 
-const Card = () => {
+const Card = ({ card }) => {
     return (
-        <div className="card"></div>
+        <div className="card">
+            <span className="card-value">{card.value}</span>
+            <span className="card-suit">{card.suit}</span>
+        </div>
     )
 }
 
