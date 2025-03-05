@@ -18,6 +18,7 @@ const Deck = () => {
     const [deck, setDeck] = useState(createDeck());
     const [dealtCards, setDealtCards] = useState([]);
     const [isDeckEmpty, setIsDeckEmpty] = useState(false);
+    const [dealerMessage, setDealerMessage] = useState("");
 
     /**
      * 
@@ -36,6 +37,7 @@ const Deck = () => {
             updatedDeck.splice(randomCardIndex, 1);
         }
 
+        setDealerMessage("Dealing your cards");
         setTimeout(() => {
             setDeck(updatedDeck);
             setDealtCards(newCards);
@@ -68,7 +70,13 @@ const Deck = () => {
         }
     };
 
-    
+    const resetDeck = () => {
+        setDeck(createDeck());
+        setDealtCards([]);
+        setIsDeckEmpty(false);
+        console.log("Deck has been reset!");
+    }
+
     return (
         <div className="deck-container">
             {isDeckEmpty ? (
@@ -88,6 +96,7 @@ const Deck = () => {
             )}
             <br />
             <Hand dealtCards={dealtCards} />
+            {dealerMessage && <div className="dealer-message">{dealerMessage}</div>}
             <div>
                     <Button label="Deal 5" className="btn-deal5" onClick={() => dealCards(5)}/>
                     <Button label="Deal 7" className="btn-deal7" onClick={() => dealCards(7)}/>
