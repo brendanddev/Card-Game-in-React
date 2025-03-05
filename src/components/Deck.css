@@ -39,3 +39,10 @@
    justify-content: center;
    gap: 10px;
 }
+
+.empty-deck {
+   border: 2px solid black;
+   padding: 10px;
+   font-weight: bold;
+   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
