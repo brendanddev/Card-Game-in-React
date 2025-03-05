@@ -95,6 +95,18 @@ const Deck = () => {
         }
     }
 
+    const shuffleCardsInHand = () => {
+        let shuffledCardsInHand = [...dealtCards];
+        for (let i = shuffledCardsInHand.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffledCardsInHand[i], shuffledCardsInHand[j]] = [shuffledCardsInHand[j], shuffledCardsInHand[i]];
+        }
+        setDealtCards(shuffledCardsInHand);
+    }
+
+    const createRandomCard = () => {}   // Wildcard
+
+
     /**
      * 
      */
@@ -129,8 +141,8 @@ const Deck = () => {
                     <Button label="Deal 5" className="btn-deal5" onClick={() => dealCards(5)}/>
                     <Button label="Deal 7" className="btn-deal7" onClick={() => dealCards(7)}/>
                     <Button label="Toss" className="btn-toss" onClick={removeCardPermanent} />
+                    <Button label="ReGroup" className="btn-regroup" onClick={shuffleCardsInHand}/>
                     <Button label="WildCard" className="btn-wildcard" />
-                    <Button label="ReGroup" className="btn-regroup" />
                     <Button label="Reset" className="btn-reset" onClick={() => resetDeck()}/>
             </div>
         </div>
