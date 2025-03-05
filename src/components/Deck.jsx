@@ -9,12 +9,15 @@ import Hand from "../components/Hand";
 import "../components/Deck.css";
 
 const Deck = ({ dealtCards, setDealtCards, setDealCardsRef }) => {
+    // State to track the deck
     const [deck, setDeck] = useState(createDeck());
+    // State to track if the deck is empty or not
     const [isDeckEmpty, setIsDeckEmpty] = useState(false);
 
+    // Deals a certain number of cards from the deck to the user
     const dealCards = (numOfCards) => {
-        console.log("Dealing cards");
-        let updatedDeck = [...dealtCards];
+        // Combine before dealing *****************
+       let updatedDeck = [...deck, ...dealtCards];
         setDeck(updatedDeck);
         setDealtCards([]);
 
@@ -34,7 +37,6 @@ const Deck = ({ dealtCards, setDealtCards, setDealCardsRef }) => {
     }, [setDealCardsRef]);
 
     const handleDeckClicked = () => { 
-        console.log("Card dealt!");
         if (deck.length === 0) { 
             setIsDeckEmpty(true);
             console.log("Deck is empty"); 
