@@ -12,6 +12,7 @@
 }
 
 .card.picked {
-    border: 2px solid rgb(23, 253, 15);  
-    transform: translateY(-15px);
+    border: 3px solid gold;  
+    transform: translateY(-15px) scale(1.1);
+    box-shadow: 0px 0px 15px gold; 
 }
