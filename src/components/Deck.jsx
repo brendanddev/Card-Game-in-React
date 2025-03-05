@@ -5,18 +5,25 @@
 import { useState, useEffect } from "react";
 import { createDeck } from "../utils/manageDeck";
 
+import Button from "../components/Button";
 import Hand from "../components/Hand";
 import "../components/Deck.css";
 
-const Deck = ({ dealtCards, setDealtCards, setDealCardsRef }) => {
-    // State to track the deck
+/**
+ * 
+ * @param {*} param0 
+ * @returns 
+ */
+const Deck = () => {
     const [deck, setDeck] = useState(createDeck());
-    // State to track if the deck is empty or not
+    const [dealtCards, setDealtCards] = useState([]);
     const [isDeckEmpty, setIsDeckEmpty] = useState(false);
 
-    // Deals a certain number of cards from the deck to the user
+    /**
+     * 
+     * @param {*} numOfCards 
+     */
     const dealCards = (numOfCards) => {
-        // Combine before dealing *****************
        let updatedDeck = [...deck, ...dealtCards];
         setDeck(updatedDeck);
         setDealtCards([]);
@@ -28,14 +35,19 @@ const Deck = ({ dealtCards, setDealtCards, setDealCardsRef }) => {
             newCards.push(updatedDeck[randomCardIndex]);
             updatedDeck.splice(randomCardIndex, 1);
         }
-        setDeck(updatedDeck);
-        setDealtCards(newCards);
+
+        setTimeout(() => {
+            setDeck(updatedDeck);
+            setDealtCards(newCards);
+            setDealerMessage("");
+        }, 750);
     };
 
-    useEffect(() => {
-        setDealCardsRef(() => dealCards);
-    }, [setDealCardsRef]);
 
+    /**
+     * 
+     * @returns 
+     */
     const handleDeckClicked = () => { 
         if (deck.length === 0) { 
             setIsDeckEmpty(true);
@@ -56,6 +68,7 @@ const Deck = ({ dealtCards, setDealtCards, setDealCardsRef }) => {
         }
     };
 
+    
     return (
         <div className="deck-container">
             {isDeckEmpty ? (
@@ -75,8 +88,16 @@ const Deck = ({ dealtCards, setDealtCards, setDealCardsRef }) => {
             )}
             <br />
             <Hand dealtCards={dealtCards} />
+            <div>
+                    <Button label="Deal 5" className="btn-deal5" onClick={() => dealCards(5)}/>
+                    <Button label="Deal 7" className="btn-deal7" onClick={() => dealCards(7)}/>
+                    <Button label="Toss" className="btn-toss" />
+                    <Button label="WildCard" className="btn-wildcard" />
+                    <Button label="ReGroup" className="btn-regroup" />
+                    <Button label="Reset" className="btn-reset" onClick={() => resetDeck()}/>
+            </div>
         </div>
-    )
+    );
 };
 
 
