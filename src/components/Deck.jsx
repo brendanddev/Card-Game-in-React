@@ -34,7 +34,12 @@ const Deck = ({ dealtCards, setDealtCards }) => {
         const randomCardIndex = Math.floor(Math.random() * deck.length);
         const card = deck[randomCardIndex];
 
-        const newDeck = deck[deck.length - 1];
+        const newDeck = [];
+        for (let i = 0; i < deck.length; i++) {
+            if (i !== randomCardIndex) {
+                newDeck.push(deck[i]);
+            }
+        }
         setDeck(newDeck);
         setDealtCards([...dealtCards, card]);
 
