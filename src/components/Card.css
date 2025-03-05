@@ -10,3 +10,8 @@
     background-color: white;
     border: 2px solid black;
 }
+
+.card.picked {
+    border: 2px solid rgb(23, 253, 15);  
+    transform: translateY(-15px);
+}

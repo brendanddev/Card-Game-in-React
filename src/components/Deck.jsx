@@ -19,6 +19,7 @@ const Deck = () => {
     const [dealtCards, setDealtCards] = useState([]);
     const [isDeckEmpty, setIsDeckEmpty] = useState(false);
     const [dealerMessage, setDealerMessage] = useState("");
+    const [pickedCard, setPickedCard] = useState(null);
 
     /**
      * 
@@ -70,6 +71,15 @@ const Deck = () => {
         }
     };
 
+    const handleCardClicked = (index) => {
+        if (pickedCard === index) {
+            setPickedCard(null);
+        } else {    // SHOULD SWAP!!!!!!!!!!!!!!!!
+            setPickedCard(index);
+        }
+    }
+
+
     const resetDeck = () => {
         setDeck(createDeck());
         setDealtCards([]);
@@ -95,7 +105,7 @@ const Deck = () => {
                     </div>
             )}
             <br />
-            <Hand dealtCards={dealtCards} />
+            <Hand dealtCards={dealtCards} pickedCard={pickedCard} handleCardClicked={handleCardClicked} />
             {dealerMessage && <div className="dealer-message">{dealerMessage}</div>}
             <div>
                     <Button label="Deal 5" className="btn-deal5" onClick={() => dealCards(5)}/>
