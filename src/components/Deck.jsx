@@ -13,6 +13,7 @@ const Deck = ({ dealtCards, setDealtCards, setDealCardsRef }) => {
     const [isDeckEmpty, setIsDeckEmpty] = useState(false);
 
     const dealCards = (numOfCards) => {
+        console.log("Dealing cards");
         let updatedDeck = [...dealtCards];
         setDeck(updatedDeck);
         setDealtCards([]);
@@ -33,6 +34,7 @@ const Deck = ({ dealtCards, setDealtCards, setDealCardsRef }) => {
     }, [setDealCardsRef]);
 
     const handleDeckClicked = () => { 
+        console.log("Card dealt!");
         if (deck.length === 0) { 
             setIsDeckEmpty(true);
             console.log("Deck is empty"); 
