@@ -22,6 +22,11 @@
    align-items: center;
    margin-bottom: 20px; 
    cursor: pointer;
+   transition: transform 0.2s;
+}
+
+.deck:hover {
+   transform: translateY(-15px);
 }
 
 .card-list-container {
