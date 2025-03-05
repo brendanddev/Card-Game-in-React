@@ -2,66 +2,35 @@
 // Deck.jsx
 // Brendan Dileo
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createDeck } from "../utils/manageDeck";
 
 import Hand from "../components/Hand";
 import "../components/Deck.css";
 
-
-const Deck = ({ dealtCards, setDealtCards, setCardsInHand }) => {
+const Deck = ({ dealtCards, setDealtCards, setDealCardsRef }) => {
     const [deck, setDeck] = useState(createDeck());
     const [isDeckEmpty, setIsDeckEmpty] = useState(false);
 
     const dealCards = (numOfCards) => {
-        if (deck.length === 0) {
-            setIsDeckEmpty(true);
-            console.log("Deck is empty!");
-            return;
-        }
-
-        let updatedDeck = [];
-        for (let i = 0; i < deck.length; i++) {
-            updatedDeck.push(deck[i]);
-        }
-
-        let newDealtCards = [];
-        let counter = 0;
-
-        while (counter < numOfCards && updatedDeck.length > 0) {
-            const randomCardIndex = Math.floor(Math.random() * updatedDeck.length);
-            newDealtCards.push(updatedDeck[randomCardIndex]);
-            
-            let tempDeck = [];
-            for (let i = 0; i < updatedDeck.length; i++) {
-                if (i !== randomCardIndex) {
-                    tempDeck.push(updatedDeck[i]);
-                }
-            }
-
-            updatedDeck = tempDeck;
-            counter++;
-        }
-
+        let updatedDeck = [...dealtCards];
         setDeck(updatedDeck);
-        let combinedDealtCards = [];
-        for (let i = 0; i < dealtCards.length; i++) {
-            combinedDealtCards.push(dealtCards[i]);
-        }
+        setDealtCards([]);
 
-        for (let i = 0; i < newDealtCards.length; i++) {
-            combinedDealtCards.push(newDealtCards[i]);
+        let newCards = [];
+        for (let i = 0; i < numOfCards; i++) {
+            if (updatedDeck.length === 0) break;
+            const randomCardIndex = Math.floor(Math.random() * updatedDeck.length);
+            newCards.push(updatedDeck[randomCardIndex]);
+            updatedDeck.splice(randomCardIndex, 1);
         }
-
-        setDealtCards(combinedDealtCards);
-        let combinedCardsInHand = [];
-        for (let i = 0; i < newDealtCards.length; i++) {
-            combinedCardsInHand.push(newDealtCards[i]);
-        }
-
-        setCardsInHand(combinedCardsInHand);
-        setIsDeckEmpty(updatedDeck.length === 0);
+        setDeck(updatedDeck);
+        setDealtCards(newCards);
     };
+
+    useEffect(() => {
+        setDealCardsRef(() => dealCards);
+    }, [setDealCardsRef]);
 
     const handleDeckClicked = () => { 
         if (deck.length === 0) { 
@@ -71,26 +40,18 @@ const Deck = ({ dealtCards, setDealtCards, setCardsInHand }) => {
         }
 
         const randomCardIndex = Math.floor(Math.random() * deck.length);
-        const newDealtCard = deck[randomCardIndex];
-        let updatedDeck = [];
+        const card = deck[randomCardIndex];
 
-        for (let i = 0; i < deck.length; i++) {
-            if (i !== randomCardIndex) {
-                updatedDeck.push(deck[i]);
-            }
+        let newDeck = [...deck];
+        newDeck.splice(randomCardIndex, 1);
+        setDeck(newDeck);
+        setDealtCards([...dealtCards, card]);
+
+        if (newDeck.length === 0) {
+            setIsDeckEmpty(true);
         }
-
-        setDeck(updatedDeck);
-        let newDealtCards = [];
-        for (let i = 0; i < deck.length; i++) {
-            newDealtCards.push(dealtCards[i]);
-        }
-
-        newDealtCards.push(newDealtCard);
-        setDealtCards(newDealtCards);
-        setIsDeckEmpty(updatedDeck.length === 0);
     };
-    
+
     return (
         <div className="deck-container">
             {isDeckEmpty ? (
@@ -112,8 +73,8 @@ const Deck = ({ dealtCards, setDealtCards, setCardsInHand }) => {
             <Hand dealtCards={dealtCards} />
         </div>
     )
+};
 
-}
 
 // Exports the Deck component so it can be used other files
 export default Deck;
