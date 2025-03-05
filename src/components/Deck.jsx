@@ -71,6 +71,10 @@ const Deck = () => {
         }
     };
 
+    /**
+     * 
+     * @param {*} index 
+     */
     const handleCardClicked = (index) => {
         if (pickedCard === index) {
             setPickedCard(null);
@@ -79,7 +83,21 @@ const Deck = () => {
         }
     }
 
+    /**
+     * 
+     */
+    const removeCardPermanent = () => {
+        if (pickedCard !== null) {
+            let newDealtCards = [...dealtCards];
+            newDealtCards.splice(pickedCard, 1);
+            setDealtCards(newDealtCards);
+            setPickedCard(null);
+        }
+    }
 
+    /**
+     * 
+     */
     const resetDeck = () => {
         setDeck(createDeck());
         setDealtCards([]);
@@ -110,7 +128,7 @@ const Deck = () => {
             <div>
                     <Button label="Deal 5" className="btn-deal5" onClick={() => dealCards(5)}/>
                     <Button label="Deal 7" className="btn-deal7" onClick={() => dealCards(7)}/>
-                    <Button label="Toss" className="btn-toss" />
+                    <Button label="Toss" className="btn-toss" onClick={removeCardPermanent} />
                     <Button label="WildCard" className="btn-wildcard" />
                     <Button label="ReGroup" className="btn-regroup" />
                     <Button label="Reset" className="btn-reset" onClick={() => resetDeck()}/>
