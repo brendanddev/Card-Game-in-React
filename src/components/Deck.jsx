@@ -42,7 +42,7 @@ const Deck = ({ dealtCards, setDealtCards }) => {
             updatedDeck = tempDeck;
             counter++;
 
-            if (i === numOfCards - 1 || updatedDeck.length === 0) {
+            if (counter === numOfCards - 1 || updatedDeck.length === 0) {
                 setDeck(updatedDeck);
                 setDealtCards(newCards);
                 setIsDeckEmpty(updatedDeck.length === 0);
@@ -50,17 +50,15 @@ const Deck = ({ dealtCards, setDealtCards }) => {
         }
     };
 
-   
     const handleDeckClicked = () => { 
         if (deck.length === 0) { 
             setIsDeckEmpty(true);
             console.log("Deck is empty"); 
             return; 
-
         }
 
         const randomCardIndex = Math.floor(Math.random() * deck.length);
-        const newDealtCard = deck[randomIndex];
+        const newDealtCard = deck[randomCardIndex];
         let updatedDeck = [];
 
         for (let i = 0; i < deck.length; i++) {
@@ -75,7 +73,7 @@ const Deck = ({ dealtCards, setDealtCards }) => {
             newDealtCards.push(dealtCards[i]);
         }
 
-        newDealtCard.push(newDealtCard);
+        newDealtCards.push(newDealtCard);
         setDealtCards(newDealtCards);
         setIsDeckEmpty(updatedDeck.length === 0);
     };
@@ -98,7 +96,7 @@ const Deck = ({ dealtCards, setDealtCards }) => {
                     </div>
             )}
             <br />
-            <Hand  />
+            <Hand dealtCards={dealtCards} />
         </div>
     )
 
