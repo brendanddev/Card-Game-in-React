@@ -9,8 +9,7 @@ import Hand from "../components/Hand";
 import "../components/Deck.css";
 
 
-const Deck = ({ dealtCards, setDealtCards }) => {
-
+const Deck = ({ dealtCards, setDealtCards, setCardsInHand }) => {
     const [deck, setDeck] = useState(createDeck());
     const [isDeckEmpty, setIsDeckEmpty] = useState(false);
 
@@ -32,22 +31,36 @@ const Deck = ({ dealtCards, setDealtCards }) => {
         while (counter < numOfCards && updatedDeck.length > 0) {
             const randomCardIndex = Math.floor(Math.random() * updatedDeck.length);
             newDealtCards.push(updatedDeck[randomCardIndex]);
-
+            
             let tempDeck = [];
             for (let i = 0; i < updatedDeck.length; i++) {
-                if (i !== randomIndex) {
+                if (i !== randomCardIndex) {
                     tempDeck.push(updatedDeck[i]);
                 }
             }
+
             updatedDeck = tempDeck;
             counter++;
-
-            if (counter === numOfCards - 1 || updatedDeck.length === 0) {
-                setDeck(updatedDeck);
-                setDealtCards(newCards);
-                setIsDeckEmpty(updatedDeck.length === 0);
-            }
         }
+
+        setDeck(updatedDeck);
+        let combinedDealtCards = [];
+        for (let i = 0; i < dealtCards.length; i++) {
+            combinedDealtCards.push(dealtCards[i]);
+        }
+
+        for (let i = 0; i < newDealtCards.length; i++) {
+            combinedDealtCards.push(newDealtCards[i]);
+        }
+
+        setDealtCards(combinedDealtCards);
+        let combinedCardsInHand = [];
+        for (let i = 0; i < newDealtCards.length; i++) {
+            combinedCardsInHand.push(newDealtCards[i]);
+        }
+
+        setCardsInHand(combinedCardsInHand);
+        setIsDeckEmpty(updatedDeck.length === 0);
     };
 
     const handleDeckClicked = () => { 
