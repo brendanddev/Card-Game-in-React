@@ -26,6 +26,7 @@ const Deck = () => {
      * @param {*} numOfCards 
      */
     const dealCards = (numOfCards) => {
+        console.log("Dealing cards!");
        let updatedDeck = [...deck, ...dealtCards];
         setDeck(updatedDeck);
         setDealtCards([]);
@@ -52,6 +53,7 @@ const Deck = () => {
      * @returns 
      */
     const handleDeckClicked = () => { 
+        console.log("Deck clicked!")
         if (deck.length === 0) { 
             setIsDeckEmpty(true);
             console.log("Deck is empty"); 
@@ -76,6 +78,7 @@ const Deck = () => {
      * @param {*} index 
      */
     const handleCardClicked = (index) => {
+        console.log("Card clicked!");
         if (pickedCard === index) {
             setPickedCard(null);
         } else {    // SHOULD SWAP!!!!!!!!!!!!!!!!
@@ -83,10 +86,9 @@ const Deck = () => {
         }
     }
 
-    /**
-     * 
-     */
+    // Toss
     const removeCardPermanent = () => {
+        console.log("Removing card... permanently!");
         if (pickedCard !== null) {
             let newDealtCards = [...dealtCards];
             newDealtCards.splice(pickedCard, 1);
@@ -95,7 +97,9 @@ const Deck = () => {
         }
     }
 
+    // Regroup
     const shuffleCardsInHand = () => {
+        console.log("Shuffling cards in hand!");
         let shuffledCardsInHand = [...dealtCards];
         for (let i = shuffledCardsInHand.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -104,7 +108,12 @@ const Deck = () => {
         setDealtCards(shuffledCardsInHand);
     }
 
-    const createRandomCard = () => {}   // Wildcard
+    // Wildcard
+    const createRandomCard = () => {
+        const fullDeck = createDeck();
+        const randomCard = fullDeck[Math.floor(Math.random() * fullDeck.length)];
+        setDealtCards([...dealtCards, randomCard]);
+    }  
 
 
     /**
@@ -142,7 +151,7 @@ const Deck = () => {
                     <Button label="Deal 7" className="btn-deal7" onClick={() => dealCards(7)}/>
                     <Button label="Toss" className="btn-toss" onClick={removeCardPermanent} />
                     <Button label="ReGroup" className="btn-regroup" onClick={shuffleCardsInHand}/>
-                    <Button label="WildCard" className="btn-wildcard" />
+                    <Button label="WildCard" className="btn-wildcard" onClick={createRandomCard}/>
                     <Button label="Reset" className="btn-reset" onClick={() => resetDeck()}/>
             </div>
         </div>
