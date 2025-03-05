@@ -22,29 +22,45 @@ const createDeck = () => {
 
 const Deck = ({ dealtCards, setDealtCards }) => {
     const [deck, setDeck] = useState(createDeck());
+    const [isDeckEmpty, setIsDeckEmpty] = useState(false);
 
     const handleDeckClicked = () => { 
-        if (deck.length === 0) { alert("No more cards left in the deck!"); return; }
+        if (deck.length === 0) { 
+            setIsDeckEmpty(true);
+            console.log("Deck is empty"); 
+            return; 
+        }
         
         const randomCardIndex = Math.floor(Math.random() * deck.length);
         const card = deck[randomCardIndex];
+
         const newDeck = deck[deck.length - 1];
         setDeck(newDeck);
         setDealtCards([...dealtCards, card]);
+
+        if (newDeck.length === 0) {
+            setIsDeckEmpty(true);
+        }
     }
     
     return (
         <div className="deck-container">
-            <div className="deck" onClick={handleDeckClicked}>   
-                <span>
-                    Deck O' Cards
-                    <br />
-                    ♠
-                    <br />
-                    ♧
-                </span>   
-            </div>
-            
+            {isDeckEmpty ? (
+                <div className="empty-deck">
+                    <span>No Cards remaining in the Deck!</span>
+                </div>
+            ) : (
+                    <div className="deck" onClick={handleDeckClicked}>   
+                        <span>
+                            Deck O' Cards
+                            <br />
+                            ♠
+                            <br />
+                            ♧
+                        </span>   
+                    </div>
+            )}
+            <br />
             <div className="card-list-container">
                 <h3>Your Hand</h3>
                 <div className="card-list">
