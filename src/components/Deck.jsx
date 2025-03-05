@@ -24,28 +24,14 @@ const Deck = ({ dealtCards, setDealtCards }) => {
     const [deck, setDeck] = useState(createDeck());
 
     const handleDeckClicked = () => { 
+        if (deck.length === 0) { alert("No more cards left in the deck!"); return; }
+        
         const randomCardIndex = Math.floor(Math.random() * deck.length);
         const card = deck[randomCardIndex];
+        const newDeck = deck[deck.length - 1];
+        setDeck(newDeck);
         setDealtCards([...dealtCards, card]);
     }
-
-    const dealCards = (numOfCards) => {
-        let cardsDealt = [];
-        
-        for (let i = 0; i < numOfCards; i++) {
-            const card = { suit: "♠", value: "A" };
-            cardsDealt.push(card)
-        }
-    }
-
-    /*
-        const handleCardClicked = () => { }
-        const resetDeck = () => { }
-        const dealCards = ({ numOfCards }) => { }
-        const wildcardCard = () => { }
-        const tossCard = () => { }
-        const regroupCards = () => { }
-        */
     
     return (
         <div className="deck-container">
