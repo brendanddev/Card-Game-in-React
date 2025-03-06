@@ -80,11 +80,18 @@ const Deck = () => {
      */
     const handleCardClicked = (index) => {
         console.log("Card clicked!");
-        
-        if (pickedCard === index) {
-            setPickedCard(null);
-        } else {    // SHOULD SWAP!!!!!!!!!!!!!!!!
+
+        if (pickedCard === null) {
             setPickedCard(index);
+        } else if (pickedCard === index) {
+            setPickedCard(null);
+        } else {
+            let newDealtCards = [...dealtCards];
+            const temp = newDealtCards[index];
+            newDealtCards[index] = newDealtCards[pickedCard];
+            newDealtCards[pickedCard] = temp;
+            setDealtCards(newDealtCards);
+            setPickedCard(null);
         }
     }
 
@@ -184,7 +191,8 @@ const Deck = () => {
             <br />
             <Hand dealtCards={dealtCards} pickedCard={pickedCard} handleCardClicked={handleCardClicked} />
             {dealerMessage && <div className="dealer-message">{dealerMessage}</div>}
-            <div>
+            
+            <div className="button-container">
                     <Button label="Deal 5" className="btn-deal5" onClick={() => dealCards(5)}/>
                     <Button label="Deal 7" className="btn-deal7" onClick={() => dealCards(7)}/>
                     <Button label="Toss" className="btn-toss" onClick={removeCardPermanent} />
