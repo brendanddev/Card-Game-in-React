@@ -91,9 +91,11 @@ const Deck = () => {
         console.log("Removing card... permanently!");
         if (pickedCard !== null) {
             let newDealtCards = [...dealtCards];
-            newDealtCards.splice(pickedCard, 1);
+            let removedCard = newDealtCards.splice(pickedCard, 1);
+
             setDealtCards(newDealtCards);
             setPickedCard(null);
+            setDeck(prevDeck => prevDeck.filter(card => !(card.suit === removedCard.suit && card.value === removedCard.value)));
         }
     }
 
@@ -114,7 +116,6 @@ const Deck = () => {
         const randomCard = fullDeck[Math.floor(Math.random() * fullDeck.length)];
         setDealtCards([...dealtCards, randomCard]);
     }  
-
 
     /**
      * 
