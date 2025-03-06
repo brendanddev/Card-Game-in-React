@@ -13,5 +13,10 @@
 
 .card-container {
   margin: 10px;
-  border: 1px solid black;
+  border: 1px solid rgb(3, 3, 3);
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.7);
+}
+
+body {
+  background-color: rgb(180, 180, 180);
 }
