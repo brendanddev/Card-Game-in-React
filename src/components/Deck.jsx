@@ -106,7 +106,7 @@ const Deck = () => {
                     }
                 }
                 return newDeck;
-            })
+            });
         }
     }
 
@@ -132,7 +132,24 @@ const Deck = () => {
      * 
      */
     const resetDeck = () => {
-        setDeck(createDeck());
+        const newDeck = createDeck();
+        let filteredDeck = [];
+
+        for (let i = 0; i < newDeck.length; i++) {
+            const card = newDeck[i];
+
+            let isCardRemoved = false;
+            for (let j = 0; j < removedCards.length; j++) {
+                const removedCard = removedCards[j];
+                if (removedCard.suit === card.suit && removedCard.value === card.value) {
+                    isCardRemoved = true;
+                    break;
+                }
+            }
+            if (!isCardRemoved) filteredDeck.push(card);
+        }
+
+        setDeck(filteredDeck);
         setDealtCards([]);
         setIsDeckEmpty(false);
         console.log("Deck has been reset!");
