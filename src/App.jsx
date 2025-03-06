@@ -9,11 +9,10 @@ function App() {
         
   return (
     <div className="main-container">
-      <h1>Assignment 3 - Deck of Cards</h1>
-      <div className="card-container">
-        <Deck 
-        />
-      </div>
+        <h1 class="text-4xl font-extrabold text-gray-800 my-6">Assignment 3 - Deck of Cards</h1>
+        <div className="card-container">
+            <Deck />
+        </div>
     </div>
   )
 }

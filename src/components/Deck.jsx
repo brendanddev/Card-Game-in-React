@@ -2,7 +2,7 @@
 // Deck.jsx
 // Brendan Dileo
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { createDeck } from "../utils/manageDeck";
 
 import Button from "../components/Button";
@@ -40,7 +40,7 @@ const Deck = () => {
             updatedDeck.splice(randomCardIndex, 1);
         }
 
-        setDealerMessage("Dealing your cards");
+        setDealerMessage("Dealing your cards...");
         setTimeout(() => {
             setDeck(updatedDeck);
             setDealtCards(newCards);
@@ -190,15 +190,44 @@ const Deck = () => {
             )}
             <br />
             <Hand dealtCards={dealtCards} pickedCard={pickedCard} handleCardClicked={handleCardClicked} />
-            {dealerMessage && <div className="dealer-message">{dealerMessage}</div>}
-            
+            {dealerMessage && (
+                <div className="dealer-message text-black text-xl font-semibold p-4 max-w-xs mx-auto">
+                    {dealerMessage}
+                </div>
+            )}
+
             <div className="button-container">
-                    <Button label="Deal 5" className="btn-deal5" onClick={() => dealCards(5)}/>
-                    <Button label="Deal 7" className="btn-deal7" onClick={() => dealCards(7)}/>
-                    <Button label="Toss" className="btn-toss" onClick={removeCardPermanent} />
-                    <Button label="ReGroup" className="btn-regroup" onClick={shuffleCardsInHand}/>
-                    <Button label="WildCard" className="btn-wildcard" onClick={createRandomCard}/>
-                    <Button label="Reset" className="btn-reset" onClick={() => resetDeck()}/>
+                    <Button 
+                        label="Deal 5" 
+                        className="bg-blue-500 text-white hover:bg-blue-600"
+                        onClick={() => dealCards(5)}
+                    />
+                    <Button 
+                        label="Deal 7" 
+                        className="bg-red-500 text-white hover:bg-red-600"
+                        onClick={() => dealCards(7)}
+                    />
+                    <Button 
+                        label="Toss" 
+                        className="bg-red-500 text-white hover:bg-red-600"
+                        onClick={removeCardPermanent} 
+                    />
+                    <Button 
+                        label="ReGroup" 
+                        className="bg-purple-500 text-white hover:bg-purple-600"
+                        onClick={shuffleCardsInHand}
+                    />
+                    <Button 
+                        label="WildCard" 
+                        className="bg-yellow-500 text-black hover:bg-yellow-600"
+                        onClick={createRandomCard}
+                    />
+                    <Button 
+                        label="Reset" 
+                        className="bg-cyan-500 text-white hover:bg-cyan-600"
+                        onClick={() => resetDeck()}
+                        
+                    />
             </div>
         </div>
     );
