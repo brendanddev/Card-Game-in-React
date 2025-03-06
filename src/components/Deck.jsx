@@ -80,6 +80,7 @@ const Deck = () => {
      */
     const handleCardClicked = (index) => {
         console.log("Card clicked!");
+        
         if (pickedCard === index) {
             setPickedCard(null);
         } else {    // SHOULD SWAP!!!!!!!!!!!!!!!!
@@ -107,11 +108,19 @@ const Deck = () => {
                 }
                 return newDeck;
             });
+        } else {
+            alert("No card is selected! Please make a selection first!");
+            return;
         }
     }
 
     // Regroup
     const shuffleCardsInHand = () => {
+        if (dealCards.length === 0) {
+            alert("There are no cards in your hand! Deal some cards before shuffling!");
+            return;
+        }
+
         console.log("Shuffling cards in hand!");
         let shuffledCardsInHand = [...dealtCards];
         for (let i = shuffledCardsInHand.length - 1; i > 0; i--) {
