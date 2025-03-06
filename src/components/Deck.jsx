@@ -92,7 +92,7 @@ const Deck = () => {
         console.log("Removing card... permanently!");
         if (pickedCard !== null) {
             let newDealtCards = [...dealtCards];
-            let removedCard = newDealtCards.splice(pickedCard, 1);
+            let removedCard = newDealtCards.splice(pickedCard, 1)[0];
 
             setDealtCards(newDealtCards);
             setPickedCard(null);
