@@ -1,0 +1,26 @@
+
+/* Button.css
+   Brendan Dileo
+*/
+
+/* Global styles across all buttons on the webpage,
+   each button will use the class name 'btn' when 
+   its created, and then its color will be determined
+   by the name of the class following btn. 
+*/
+
+
+button {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button-hover:hover {
+    transform: scale(1.10); 
+    box-shadow: 0 4px 10px rgb(68, 65, 65); 
+}
+
+.button-click:active {
+    transform: scale(1);
+    box-shadow: none;
+}

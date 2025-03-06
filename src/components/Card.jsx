@@ -10,8 +10,10 @@ const Card = ({ card, isPicked, handleCardClicked }) => {
             className={`card ${isPicked ? "picked" : ""}`} 
             onClick={handleCardClicked}
         >
-            <span className="card-value">{card.value}</span>
-            <span className="card-suit">{card.suit}</span>
+            <div className="card-content">
+                <span className="card-value">{card.value}</span>
+                <span className="card-suit">{card.suit}</span>
+            </div>
         </div>
     )
 }
