@@ -178,15 +178,19 @@ const Deck = () => {
                     <span>No Cards remaining in the Deck!</span>
                 </div>
             ) : (
-                    <div className="deck" onClick={handleDeckClicked}>   
-                        <span>
-                            Deck O' Cards
-                            <br />
-                            ♠
-                            <br />
-                            ♧
-                        </span>   
+                <>
+
+                <h1 className="mt-4 mb-10 text-2xl font-bold border-b border-black pb-2">The Deck O' Cards</h1>
+                    <div className="deck" onClick={handleDeckClicked}>
+                        <div className="deck-list">
+                            <div className="deck-card deck-card-one"></div>
+                            <div className="deck-card deck-card-two"></div>
+                            <div className="deck-card deck-card-three"></div>
+                            <div className="deck-card deck-card-four"></div>
+                            <div className="deck-card deck-card-five"></div>
+                        </div>
                     </div>
+                </>
             )}
             <br />
             <Hand dealtCards={dealtCards} pickedCard={pickedCard} handleCardClicked={handleCardClicked} />
