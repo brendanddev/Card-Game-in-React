@@ -1,9 +1,19 @@
 
-// Card.jsx
-// Brendan Dileo
+/**
+ * @file Card.jsx
+ * @author Brendan Dileo 
+ * 
+ * 
+ */
 
 import '../components/Card.css';
 
+/**
+ * Functional Card Component 
+ * 
+ * @param {*} param0 
+ * @returns 
+ */
 const Card = ({ card, isPicked, handleCardClicked }) => {
     return (
         <div 

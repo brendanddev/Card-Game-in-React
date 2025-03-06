@@ -1,9 +1,16 @@
 
-// Button.jsx
-// Brendan Dileo
+/**
+ * @file Button.jsx
+ * @author Brendan Dileo
+ */
 
 import "../components/Button.css";
 
+/**
+ * 
+ * @param {*} param0 
+ * @returns 
+ */
 const Button = ({ label, onClick, className }) => {
     return (
         <button
@@ -16,5 +23,4 @@ const Button = ({ label, onClick, className }) => {
     )
 }
 
-// Export Button component
 export default Button;

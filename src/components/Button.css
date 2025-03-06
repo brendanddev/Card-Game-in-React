@@ -1,14 +1,11 @@
 
-/* Button.css
-   Brendan Dileo
-*/
+/* 
+    @file Button.css
+    @author Brendan Dileo
 
-/* Global styles across all buttons on the webpage,
-   each button will use the class name 'btn' when 
-   its created, and then its color will be determined
-   by the name of the class following btn. 
+    Global styles across all buttons on the webpage, each button will use the class name 'button' when 
+    its created, and then its color will be determined by the name of the class following btn. 
 */
-
 
 button {
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
