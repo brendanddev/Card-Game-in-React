@@ -40,10 +40,13 @@ export const createDeck = () => {
  * @returns {Object} - An object containing the updated deck and an array of the cards dealt.
  */
 export const dealCardsFromDeck = (deck, dealtCards, numOfCards) => {
+    // Creates a new array, combines the contents of the existing deck
+    // and the array of cards dealt
     let updatedDeck = [...deck, ...dealtCards];
-    let newCards = [];
+    let newCards = [];  // Cards being dealt
     for (let i = 0; i < numOfCards; i++) {
         if (updatedDeck.length === 0) break;
+        // Finds a random index of one of the cards
         const randomCardIndex = Math.floor(Math.random() * updatedDeck.length);
         newCards.push(updatedDeck[randomCardIndex]);
         // Removes the dealt card from the deck
@@ -86,8 +89,8 @@ export const shuffleCardsInHand = (cards) => {
 export const removeCardPermanent = (deck, dealtCards, pickedCard) => {
     let newDealtCards = [...dealtCards];
     let removedCard = newDealtCards.splice(pickedCard, 1)[0];
-    
+    // Shorthand for a for loop iterating through the cards in the deck,
+    // creates a new array without the card removed
     let newDeck = deck.filter(card => !(card.suit === removedCard.suit && card.value === removedCard.value));
-    
     return { newDeck, newDealtCards, removedCard };
 };

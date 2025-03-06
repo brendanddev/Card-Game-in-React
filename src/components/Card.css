@@ -1,9 +1,7 @@
 
-
 /**
     @file Card.css
     @author Brendan Dileo
-
 **/
 
 .card {
@@ -23,6 +21,7 @@
     transition: all 0.2s ease-in-out;
 }
 
+/* Styles for when the card is 'picked', adds a gold border and moves it up */
 .card.picked {
     border: 3px solid gold;  
     transform: translateY(-15px) scale(1.1);
