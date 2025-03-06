@@ -20,6 +20,7 @@ const Deck = () => {
     const [isDeckEmpty, setIsDeckEmpty] = useState(false);
     const [dealerMessage, setDealerMessage] = useState("");
     const [pickedCard, setPickedCard] = useState(null);
+    const [removedCards, setRemovedCards] = useState([]);
 
     /**
      * 
@@ -95,7 +96,17 @@ const Deck = () => {
 
             setDealtCards(newDealtCards);
             setPickedCard(null);
-            setDeck(prevDeck => prevDeck.filter(card => !(card.suit === removedCard.suit && card.value === removedCard.value)));
+            setRemovedCards(previousRemoved => [...previousRemoved, removedCard]);
+            setDeck(previousDeck => {
+                let newDeck = [];
+                for (let i = 0; i < previousDeck.length; i++) {
+                    const card = previousDeck[i];
+                    if (card.suit !== removedCard.suit || card.value !== removedCard.value) {
+                        newDeck.push(card);
+                    }
+                }
+                return newDeck;
+            })
         }
     }
 
