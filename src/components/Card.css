@@ -44,3 +44,11 @@
     font-weight: bold;
 }
 
+.red-suit, .red-value {
+    color: red;
+}
+
+.black-suit, .black-value {
+    color: black;
+}
+

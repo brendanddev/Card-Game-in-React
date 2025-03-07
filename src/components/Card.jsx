@@ -15,12 +15,18 @@ import '../components/Card.css';
  * Functional Card Component 
  * 
  * It will determine which style to apply to the card based on the prop passed to the component,
- * and renders the card with its value and suit.
+ * and renders the card with its value and suit. The style of the rank and suit displayed will
+ * depend a conditional ternary operator, which will determine which color the content of the
+ * card should be depending on its rank and suit (Red for hearts and diamonds, black for spades and clubs).
  * 
  * @param {Object} param0 - The object containing the components props (properties).
  * @returns {JSX.Element} - The JSX rendering the Card component onto the page.
  */
 const Card = ({ card, isPicked, handleCardClicked }) => {
+    // Determines which style class to apply based on the cards suit
+    const suitClass = (card.suit === '♥' || card.suit === '♦') ? 'red-suit' : 'black-suit';
+    const valueClass = (card.suit === '♥' || card.suit === '♦') ? 'red-value' : 'black-value';
+
     return (
         <div 
             // Determines which class to apply based on the 'isPicked' var
@@ -28,8 +34,9 @@ const Card = ({ card, isPicked, handleCardClicked }) => {
             onClick={handleCardClicked}
         >
             <div className="card-content">
-                <span className="card-value">{card.value}</span>
-                <span className="card-suit">{card.suit}</span>
+                {/* Dynamically styles the card based on its value and suit */}
+                <span className={`card-value ${valueClass}`}>{card.value}</span>
+                <span className={`card-suit ${suitClass}`}>{card.suit}</span>
             </div>
         </div>
     )
