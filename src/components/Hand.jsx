@@ -8,6 +8,8 @@
  * It will receive the cards that have been dealt through a prop (property), track
  * which card has been picked, and handle the event of a click of one of the cards
  * in hand.
+ * 
+ * StAuth10244: I Brendan Dileo, 000879513 certify that this material is my original work. No other person's work has been used without due acknowledgement. I have not made my work available to anyone else.
  */
 
 import Card from "../components/Card";

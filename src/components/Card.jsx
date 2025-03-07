@@ -7,6 +7,8 @@
  * The Card component will represent a single card in the deck of cards. Each card (Except the wildcard), will 
  * have a unique set of suit and rank, and the Card component will render each Card with a unique set. Additionally,
  * the Card component will include logic for determining if the Card has been picked or not, passed as a prop.
+ * 
+ * StAuth10244: I Brendan Dileo, 000879513 certify that this material is my original work. No other person's work has been used without due acknowledgement. I have not made my work available to anyone else.
  */
 
 import '../components/Card.css';

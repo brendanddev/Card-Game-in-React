@@ -14,6 +14,8 @@
  * 
  * The user will be able to deal five cards, deal seven cards, toss (permanently remove) a card, regroup their cards (shuffle),
  * create a wildcard (random card), or reset the deck.
+ * 
+ * StAuth10244: I Brendan Dileo, 000879513 certify that this material is my original work. No other person's work has been used without due acknowledgement. I have not made my work available to anyone else.
  */
 
 import { useState } from "react";

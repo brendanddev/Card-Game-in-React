@@ -4,7 +4,9 @@
     @author Brendan Dileo
 
     Global styles across all buttons on the webpage, each button will use the class name 'button' when 
-    its created, and then its color will be determined by the name of the class following btn. 
+    its created, and then its color will be determined by the name of the class following button. 
+
+    StAuth10244: I Brendan Dileo, 000879513 certify that this material is my original work. No other person's work has been used without due acknowledgement. I have not made my work available to anyone else.
 */
 
 button {

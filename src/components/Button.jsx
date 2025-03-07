@@ -6,6 +6,8 @@
  * This file contains the Button component.
  * This component will render a button that can be customized with dynamic styling, and an
  * event handler.
+ * 
+ * StAuth10244: I Brendan Dileo, 000879513 certify that this material is my original work. No other person's work has been used without due acknowledgement. I have not made my work available to anyone else.
 */
 
 import "../components/Button.css";

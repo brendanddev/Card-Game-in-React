@@ -8,6 +8,8 @@
  * This component is the main container for the application, and will render the title of the page,
  * and the Deck component, which will handle majority of the game logic, and render the deck onto
  * the screen.
+ * 
+ * StAuth10244: I Brendan Dileo, 000879513 certify that this material is my original work. No other person's work has been used without due acknowledgement. I have not made my work available to anyone else.
  */
 
 import Deck from "../src/components/Deck";

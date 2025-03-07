@@ -7,6 +7,8 @@
  * The goal was to move any logic from Deck.jsx to this file, to imrpove the readability
  * and modularity of the Deck component. THis utility file contains functions for creating
  * a deck of cards, shuffling the cards, and permanently removing a card.
+ * 
+ * StAuth10244: I Brendan Dileo, 000879513 certify that this material is my original work. No other person's work has been used without due acknowledgement. I have not made my work available to anyone else.
  */
 
 const suits = ["♥", "♦", "♣", "♠"];
